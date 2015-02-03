@@ -1,0 +1,6 @@
+#!/bin/bash
+while true
+do
+  php5 /opt/lampp/htdocs/game/fetchxml.php 2>out
+  sleep 5
+done

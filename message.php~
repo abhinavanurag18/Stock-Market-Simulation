@@ -1,0 +1,67 @@
+
+<tr>
+					<td class="yellow-left"><a href="http://www.moneycontrol.com/news/brokeragerecommendations-261.html">Stock Advice </a></td>
+					<td class="yellow-right"><a class="close-yellow"><img src="images/table/icon_close_yellow.gif"   alt="" /></a></td>
+				</tr>
+				</table>
+				</div>
+				<!--  end message-yellow -->
+				
+				<!--  start message-red -->
+				<div id="message-red">
+				<table border="0" width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="red-left"><a href="currentsensex.php" target="_blank">Current Sensex (Opens in a new tab/window)</a></td>
+					<td class="red-right"><a class="close-red"><img src="images/table/icon_close_red.gif"   alt="" /></a></td>
+				</tr>
+				</table>
+				</div>
+
+
+
+
+
+<!--  start message-yellow -->
+<div id="message1">
+				<div id="message-yellow">
+				<table border="0" width="100%" cellpadding="0" cellspacing="0">
+				
+				<!--  end message-red -->
+				
+				<!--  start message-blue -->
+				<?php
+				if (isset($_GET['value']) && isset($_GET['type']) && isset($_GET['order']) && ($_GET['value']=='true') && ($_GET['order']=='place')) {
+							
+				?>
+				<div id="message-blue">
+				<table border="0" width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="blue-left"><?php echo "Your last <strong>'".$_GET['type']."'</strong> has been successfully placed. You will get a notification as soon as it is executed."; ?> </td>
+					<td class="blue-right"><a class="close-blue"><img src="images/table/icon_close_blue.gif"   alt="" /></a></td>
+				</tr>
+				</table>
+				</div>
+				<?php
+				}
+				?>
+				<!--  end message-blue -->
+			
+				<!--  start message-green -->
+				<div id="message-green">
+				<table border="0" width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+				<?php
+				$query_buy = mysql_query("SELECT sum(`rate`*`amount`) FROM `buy` where username='".$_SESSION['username']."'");
+				$query_sell= mysql_query("SELECT sum(`rate`*`amount`) FROM `sell` where `username`='".$_SESSION['username']."' AND `success`='1'");
+				$buy= (mysql_fetch_row($query_buy));
+				$sell= (mysql_fetch_row($query_sell));
+				$inhand=$initial_balance-$buy[0]+$sell[0];
+				?>
+				
+					<td class="green-left">Current Balance: <a href=""><?php echo $inhand; ?></a></td>
+					<td class="green-right"><a class="close-green"><img src="images/table/icon_close_green.gif"   alt="" /></a></td>
+				</tr>
+				</table>
+				</div>
+</div>
+				<!--  end message-green -->
